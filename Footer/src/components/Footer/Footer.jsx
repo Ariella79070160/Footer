@@ -8,7 +8,7 @@ import {
 } from 'react-icons/ri';
 
 import Link from '../ui/Link';
-
+import NewsLetterForm from './NewsletterForm';
 
 const shopCategories = [
     {
@@ -75,9 +75,101 @@ const footerSocials = [
 
 const Footer = () => {
     return(
-        <footer>
-            <div>
-                
+        <footer
+          className={clsx(
+            'mx-auto w-full max-w-[1216px] px-4 xl:px-0',
+            'flex flex-col gap-12 md:gap-16',
+            'py-12 md:py-16 lg:py-24',
+          )}>
+            <div className="grid grid-cols-4 gap-x-4 md:grid-cols-6 md:gap-x-8 lg:grid-cols-12 lg:gap-y-[66px]">
+                <div 
+                  className={clsx(
+                    'flex flex-col gap-2',
+                    'col-span-4 md:col-span-6 lg:col-span-8',
+                  )}>
+                  <div className='font-semibold text-xl text-neutral-900'>Join our newsletter</div>
+                  <div className='font-normal text-base text-neutral-600'>We'll send you a nice letter once per week. No spam.</div>
+                </div>
+
+                <div className="col-span-4 mt-8 md:col-span-6 md:mt-5 lg:col-span-4 lg:mt-0">
+                  <NewsLetterForm />
+                </div>
+
+                <div
+                  className={clsx(
+                    'flex flex-col gap-6 md:gap-8',
+                    'col-span-4 mt-12 md:col-span-3 md:mt-16 lg:col-span-4 lg:mt-0',
+                  )}>
+                  <div>
+                    <img
+                      src="https://vaqybtnqyonvlwtskzmv.supabase.co/storage/v1/object/public/e-commerce-track-images/logo.svg"
+                      alt="Stylenest's Logo"
+                      className="block h-8 w-auto"
+                    />
+                  </div>
+                  <div className="font-normal text-base text-neutral-600">
+                    Craft stunning style journeys that weave more joy into every thread.
+                  </div>
+                </div>
+
+                <div className="col-span-3 hidden md:block lg:hidden" />
+
+                <div
+                  className={clsx(
+                    'flex flex-col gap-4',
+                    'col-span-4 mt-8 md:col-span-3 md:mt-12 lg:col-start-7 lg:mt-0',
+                  )}>
+                  <div className='font-normal text-sm text-neutral-500'>
+                    SHOP CATEGORIES
+                  </div>
+                  <div className="flex flex-col gap-3">
+                    {shopCategories.map((item) => (
+                      <Link to={item.href} key={item.title} variant='gray'>
+                        {item.title}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+
+                <div
+                  className={clsx(
+                    'flex flex-col gap-4',
+                    'col-span-4 mt-8 md:col-span-3 md:mt-12 lg:mt-0',
+                  )}>
+                  <div className='font-normal text-sm text-neutral-500'>
+                    SHOP COLLECTIONS
+                  </div>
+                  <div className="flex flex-col gap-3">
+                    {shopCollections.map((item) => (
+                      <Link to={item.href} key={item.title} variant='gray'>
+                        {item.title}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+
+
+                <div
+                  className={clsx(
+                    'flex flex-col gap-8 md:flex-row md:items-center lg:justify-between',
+                    'border-t border-neutral-200 pt-[31px]',
+                  )}>
+                  <div className="text-neutral-500 whitespace-nowrap">
+                    &copy; {new Date().getFullYear()} StyleNest, Inc. All rights reserved.
+                  </div>
+                  <div className="flex gap-6">
+                    {footerSocials.map(({ icon: Icon, url, name }) => (
+                      <Link
+                        key={name}
+                        to={url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="!px-0 !text-neutral-400">
+                        <Icon className="size-6" aria-hidden="true" />
+                      </Link>
+                    ))}
+                  </div>
+                </div>
             </div>
         </footer>
     )

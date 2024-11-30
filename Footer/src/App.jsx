@@ -3,14 +3,13 @@ import clsx from 'clsx';
 import Footer from './components/Footer';
 import Toast from './components/ui/Toast';
 import { useToastContext } from './context/ToastContext';
-import './App.css'
 
 function App() {
-  const { toast } = useToastContext()
+  const { toast } = useToastContext();
 
   return (
-    <main>
-      {toast.show && <Toast type={toast.type} message={toast.message}/>}
+    <main className="min-h-screen p-4">
+      {toast.show && <Toast type={toast.type} message={toast.message} />}
       <div
         className={clsx(
           'min-h-[calc(100vh_-_32px)] rounded-md bg-white',
@@ -22,7 +21,7 @@ function App() {
         </section>
       </div>
     </main>
-  )
+  );
 }
 
-export default App
+export default App;
